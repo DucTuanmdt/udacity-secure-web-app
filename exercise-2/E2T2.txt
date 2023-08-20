@@ -1,3 +1,30 @@
-Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+# Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
 
-Bonus - provide recommendations on how to remediate the vulnerabilities.
+- The VPC default security group should not allow inbound and outbound traffic
+- Ensure MFA is enabled for the "root" account
+- Ensure the default security group of every VPC restricts all traffic
+- Ensure no security groups allow ingress from 0.0.0.0/0 to port 22
+- Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389
+
+
+
+# Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+- Default Security Group Configuration: A Virtual Private Cloud (VPC) is equipped with a default security group that starts with open outbound traffic and allows communication between instances within the group.
+To enhance security, consider modifying the default security group to restrict all traffic. This can be achieved by adjusting the inbound rules to match the specific requirements of your environment while limiting potential vulnerabilities.
+
+- Secure Ingress on Port 3389: Security groups play a crucial role in controlling inbound and outbound network traffic for AWS resources.
+It's essential to configure security groups in a way that prevents unrestricted access on critical ports, such as port 3389.
+To address this, review and update the security group settings to allow only authorized sources to access the port.
+
+- Secure Ingress on Port 22:
+Similarly, security groups should be configured to disallow unrestricted access on port 22, which is often used for SSH connections.
+To address this vulnerability, modify the security group rules to permit only specific IP ranges or trusted sources to access port 22, enhancing overall security.
+
+- AWS Systems Manager for EC2 Management:
+Utilize AWS Systems Manager to manage and access your Amazon EC2 instances. This tool provides advanced management capabilities and enhances security through centralized management, patching, and compliance tracking.
+By ensuring that all EC2 instances are managed through AWS Systems Manager, you can mitigate potential risks associated with unmanaged instances.
+
+
+
+
